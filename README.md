@@ -10,34 +10,35 @@ Jenkins is the most popular Open Source Continuous Integration system. This Libr
 
 These are some of the features that are currently implemented:
 
-* Get information on test-results of completed/failed build
-* Ability to query Nodes, and manipulate them. Start, Stop, set Offline.
-* Ability to query Jobs, and manipulate them.
-* Get Plugins, Builds, Artifacts, Fingerprints
-* Validate Fingerprints of Artifacts
-* Create and Delete Users
-* Get Current Queue, Cancel Tasks
-* Create and Revoke API Tokens
-* etc. For all methods go to GoDoc Reference.
+- Get information on test-results of completed/failed build
+- Ability to query Nodes, and manipulate them. Start, Stop, set Offline.
+- Ability to query Jobs, and manipulate them.
+- Get Plugins, Builds, Artifacts, Fingerprints
+- Validate Fingerprints of Artifacts
+- Create and Delete Users
+- Get Current Queue, Cancel Tasks
+- Create and Revoke API Tokens
+- etc. For all methods go to GoDoc Reference.
 
 ## Installation
 
-    go get github.com/bndr/gojenkins
+    go get github.com/arekball/gojenkins
 
 ## CLI
 
 For users that would like CLI based on gojenkins, follow the steps below:
 
-   ```
-   $ cd cli/jenkinsctl
-   $ make
-   ```
+```
+$ cd cli/jenkinsctl
+$ make
+```
+
 ## Usage
 
 ```go
 
 import (
-  "github.com/bndr/gojenkins"
+  "github.com/arekball/gojenkins"
   "context"
   "time"
   "fmt"
@@ -78,13 +79,14 @@ fmt.Printf("build number %d with result: %v\n", build.GetBuildNumber(), build.Ge
 
 ```
 
-API Reference: https://godoc.org/github.com/bndr/gojenkins
+API Reference: https://godoc.org/github.com/arekball/gojenkins
 
 ## Examples
 
 For all of the examples below first create a jenkins object
+
 ```go
-import "github.com/bndr/gojenkins"
+import "github.com/arekball/gojenkins"
 
 jenkins, _ := gojenkins.CreateJenkins(nil, "http://localhost:8080/", "admin", "admin").Init(ctx)
 ```
@@ -309,8 +311,8 @@ All Contributions are welcome. The todo list is on the bottom of this README. Fe
 
 Although the basic features are implemented there are many optional features that are on the todo list.
 
-* Kerberos Authentication
-* Rewrite some (all?) iterators with channels
+- Kerberos Authentication
+- Rewrite some (all?) iterators with channels
 
 ## LICENSE
 
