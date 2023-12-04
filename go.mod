@@ -1,4 +1,4 @@
-module github.com/arekball/gojenkins
+module github.com/instabase/gojenkins
 
 go 1.17
 
