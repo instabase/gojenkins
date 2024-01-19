@@ -420,6 +420,15 @@ func (j *Job) HasQueuedBuild() {
 }
 
 func (j *Job) InvokeSimple(ctx context.Context, params map[string]string) (int64, error) {
+	isQueued, err := j.IsQueued(ctx)
+	if err != nil {
+		return 0, err
+	}
+
+	if isQueued {
+		Info.Printf("%s is already running. Would have cancelled the job invocation.", j.GetName())
+	}
+
 	endpoint := "/build"
 	parameters, err := j.GetParameters(ctx)
 	if err != nil {
@@ -460,6 +469,15 @@ func (j *Job) InvokeSimple(ctx context.Context, params map[string]string) (int64
 }
 
 func (j *Job) Invoke(ctx context.Context, files []string, skipIfRunning bool, params map[string]string, cause string, securityToken string) (bool, error) {
+	isQueued, err := j.IsQueued(ctx)
+	if err != nil {
+		return false, err
+	}
+
+	if isQueued {
+		Info.Printf("%s is already running. Would have cancelled the job invocation.", j.GetName())
+	}
+
 	isRunning, err := j.IsRunning(ctx)
 	if err != nil {
 		return false, err
